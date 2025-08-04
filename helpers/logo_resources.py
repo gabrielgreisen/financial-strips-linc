@@ -43,7 +43,7 @@ def ensure_logo_available(logo_name, domain, logo_base_dir="logos"):
         return None
     
 
-def get_logo_file_path(row, logo_base_dir="logos"):
+def get_logo_file_path_main(row, logo_base_dir="logos"):
     """
     Given a DataFrame row with expected columns for logo name and domain,
     returns the full path to the logo file, ensuring it exists (or fetched).
@@ -62,7 +62,55 @@ def get_logo_file_path(row, logo_base_dir="logos"):
         Full path to the logo PNG file, or None if unavailable.
     """
 
-    logo_name = str(row.iloc[11]) # your 10th column for cleaned logo name
-    domain = str(row.iloc[10]) # your 9th column for website domain
+    logo_name = str(row.iloc[7]) # your 8th column for cleaned logo name
+    domain = str(row.iloc[6]) # your 7th column for website domain
+
+    return ensure_logo_available(logo_name, domain, logo_base_dir=logo_base_dir)
+
+def get_logo_file_path(row, logo_name_idx, domain_idx, logo_base_dir="logos"):
+    """
+    Given a DataFrame row with expected columns for logo name and domain,
+    returns the full path to the logo file, ensuring it exists (or fetched).
+
+    Parameters
+    ----------
+    row : pd.Series
+        A row from your DataFrame with logo and domain info.
+
+    logo_base_dir : str
+        The directory where logo PNG files are stored.
+
+    Returns
+    -------
+    str or None
+        Full path to the logo PNG file, or None if unavailable.
+    """
+
+    logo_name = str(row.iloc[logo_name_idx]) # your 8th column for cleaned logo name
+    domain = str(row.iloc[domain_idx]) # your 7th column for website domain
+
+    return ensure_logo_available(logo_name, domain, logo_base_dir=logo_base_dir)
+
+
+def get_lincoln_file_path(logo_name, logo_base_dir="linc_logos"):
+    """
+    Given a DataFrame row with expected columns for logo name and domain,
+    returns the full path to the logo file, ensuring it exists (or fetched).
+
+    Parameters
+    ----------
+    row : pd.Series
+        A row from your DataFrame with logo and domain info.
+
+    logo_base_dir : str
+        The directory where logo PNG files are stored.
+
+    Returns
+    -------
+    str or None
+        Full path to the logo PNG file, or None if unavailable.
+    """
+
+    domain = "www.lincolninternational.com" # your 7th column for website domain
 
     return ensure_logo_available(logo_name, domain, logo_base_dir=logo_base_dir)
