@@ -8,7 +8,7 @@ from path_helpers import get_base_path
 BASE_PATH = get_base_path()
 
 df = pd.read_excel(
-    os.path.join(BASE_PATH, "database_strips_v10.xlsx"),
+    os.path.join(BASE_PATH, "database_strips_v15stale.xlsx"),
     sheet_name="Python Financials Mask",
     header=1,  # because the headers for the table are on row 2
     usecols="B:AK"  # adjust based on column range of the table/info
