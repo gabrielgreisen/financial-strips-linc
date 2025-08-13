@@ -25,7 +25,7 @@ def check_auth():
     if ok:
         if pw and expected and pw == expected:
             st.session_state.authed = True
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.error("Incorrect password")
             st.stop()
