@@ -190,7 +190,7 @@ def financials_layout_two(prs: Presentation, layout_index: int, buyers_chunk_df:
             # if none of the paragraphs had a run text is added with default formating
             para = cell.text_frame.add_paragraph()
             run = para.add_run()
-            run.text = f"{dry_powder_latam}"
+            run.text = f"{dry_powder_latam}\nAUM:{aum_latam}"
             found_index = len(cell.text_frame.paragraphs) - 1
 
         for idx, extra_para in reversed(list(enumerate(cell.text_frame.paragraphs))):
