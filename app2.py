@@ -6,7 +6,7 @@ import io
 import os
 from path_helpers import get_base_path
 
-st.set_page_config(layout="wide", page_title="Buyers Presentation Tool")
+st.set_page_config(layout="wide", page_title="Financial Buyers Presentation Tool")
 
 # === Header with Lincoln logo
 st.image(os.path.join(get_base_path(), "logos", "lincolninternational.png"), width=200)
@@ -42,8 +42,8 @@ output_file = st.text_input("Output PPT file name", value="buyers_presentation.p
 
 # Step 1 - Layout options
 template_options = {
-    "Classic Buyer Strips": 1,
-    "Strips with key Financials" : 2,
+    "Financial Buyer Strips (Dry Powder only)": 1,
+    "Strips with key Financials (Dry Powder + AUM)" : 2,
     "Classic Buyer Strips (Português)" : 3,
     "Strips with key Financials (Português)" : 4
 }
@@ -65,7 +65,7 @@ if uploaded_file is not None:
                 uploaded_file,
                 sheet_name=sheet_name,
                 header=1,
-                usecols="B:"
+                usecols="B:AK"
             ).dropna(subset=['pb_id'])
             st.success(f"✓ Loaded {len(df)} buyers from uploaded file.")
 
