@@ -3,4 +3,4 @@ pandas
 python-pptx
 requests
 deep-translator
-openyxl
+openxyl
