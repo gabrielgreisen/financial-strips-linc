@@ -62,12 +62,12 @@ def get_logo_file_path_main(row, logo_base_dir="logos"):
         Full path to the logo PNG file, or None if unavailable.
     """
 
-    logo_name = str(row.iloc[7]) # your 8th column for cleaned logo name
-    domain = str(row.iloc[6]) # your 7th column for website domain
+    logo_name = str(row["logo_file"]) # your 8th column for cleaned logo name
+    domain = str(row["website"]) # your 7th column for website domain
 
     return ensure_logo_available(logo_name, domain, logo_base_dir=logo_base_dir)
 
-def get_logo_file_path(row, logo_name_idx, domain_idx, logo_base_dir="logos"):
+def get_logo_file_path(row, logo_name_column, domain_column, logo_base_dir="logos"):
     """
     Given a DataFrame row with expected columns for logo name and domain,
     returns the full path to the logo file, ensuring it exists (or fetched).
@@ -86,8 +86,8 @@ def get_logo_file_path(row, logo_name_idx, domain_idx, logo_base_dir="logos"):
         Full path to the logo PNG file, or None if unavailable.
     """
 
-    logo_name = str(row.iloc[logo_name_idx]) # your 8th column for cleaned logo name
-    domain = str(row.iloc[domain_idx]) # your 7th column for website domain
+    logo_name = str(row[logo_name_column]) 
+    domain = str(row[domain_column]) 
 
     return ensure_logo_available(logo_name, domain, logo_base_dir=logo_base_dir)
 

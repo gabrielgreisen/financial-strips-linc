@@ -56,11 +56,11 @@ def financials_layout_two(prs: Presentation, layout_index: int, buyers_chunk_df:
 
         aum_latam = format_number(row["aum_latam"])
         dry_powder_latam = format_number(row["dry_powder_latam"])
-        linc_advised_main = str(row.iloc[11])
+        linc_advised_main = str(row["linc_advised"])
 
-        investment1desc = str(row.iloc[18])
-        investment2desc = str(row.iloc[26])
-        investment3desc = str(row.iloc[34])
+        investment1desc = str(row["investment1_shortdesc"])
+        investment2desc = str(row["investment2_shortdesc"])
+        investment3desc = str(row["investment3_shortdesc"])
 
         # Build first column (numbering)
         number = start_number + i
@@ -304,19 +304,19 @@ def financials_layout_two(prs: Presentation, layout_index: int, buyers_chunk_df:
                                 width_spacing=0.90, height_spacing=0.60, left_spacing=0.03, top_spacing=0.18)
 
         # Add logos to the sixth column
-        logo_file = get_logo_file_path(row, logo_name_idx=17, domain_idx=16)
+        logo_file = get_logo_file_path(row, logo_name_column="investment1_logofile", domain_column="investment1_website")
         if logo_file:
             place_logo_on_slide(slide, table_shape, table, row_idx, 5, logo_file,
                                 width_spacing=0.90, height_spacing=0.50, left_spacing=0.03, top_spacing=0.18)
 
         # Add logos to the seventh column
-        logo_file = get_logo_file_path(row, logo_name_idx=25, domain_idx=24)
+        logo_file = get_logo_file_path(row, logo_name_column="investment2_logofile", domain_column="investment2_website")
         if logo_file:
             place_logo_on_slide(slide, table_shape, table, row_idx, 6, logo_file,
                                 width_spacing=0.90, height_spacing=0.50, left_spacing=0.03, top_spacing=0.18)
 
         # Add logos to the eight column
-        logo_file = get_logo_file_path(row, logo_name_idx=33, domain_idx=32)
+        logo_file = get_logo_file_path(row, logo_name_column="investment3_logofile", domain_column="investment3_website")
         if logo_file:
             place_logo_on_slide(slide, table_shape, table, row_idx, 7, logo_file,
                                 width_spacing=0.90, height_spacing=0.50, left_spacing=0.03, top_spacing=0.18)
