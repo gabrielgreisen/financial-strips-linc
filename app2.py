@@ -6,7 +6,35 @@ import io
 import os
 from path_helpers import get_base_path
 
+# --- Soft password wall ---
+def check_auth():
+    if "authed" not in st.session_state:
+        st.session_state.authed = False
+
+    if st.session_state.authed:
+        return
+
+    st.title("Financial Buyers Presentation Tool")
+    st.caption("Access required")
+
+    pw = st.text_input("Password", type="password")
+    ok = st.button("Unlock")
+
+    expected = st.secrets.get("APP_PASSWORD", os.environ.get("APP_PASSWORD", ""))
+
+    if ok:
+        if pw and expected and pw == expected:
+            st.session_state.authed = True
+            st.experimental_rerun()
+        else:
+            st.error("Incorrect password")
+            st.stop()
+
+    st.stop()
+
+
 st.set_page_config(layout="wide", page_title="Financial Buyers Presentation Tool")
+check_auth()
 
 # === Header with Lincoln logo
 st.image(os.path.join(get_base_path(), "logos", "lincolninternational.png"), width=200)
