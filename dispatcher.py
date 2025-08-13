@@ -83,5 +83,5 @@ def run_strips_template(template_number: int, prs: Presentation, df: pd.DataFram
             )
         print(f"✅ Finished presentation with {runs_total} slides.")
     
-run_strips_template(2, prs=prs, df=df)
-prs.save(os.path.join(BASE_PATH, "buyers_presentation.pptx"))
+#run_strips_template(2, prs=prs, df=df)
+#prs.save(os.path.join(BASE_PATH, "buyers_presentation.pptx"))
