@@ -57,6 +57,20 @@ st.markdown("<hr style='border:1px solid #eee'>", unsafe_allow_html=True)
 # === Settings
 st.markdown("<h4 style='font-family:Arial; color:#003366;'>📂 Excel & PowerPoint Settings</h4>", unsafe_allow_html=True)
 
+# === API key selection ===
+api_choice = st.selectbox(
+    "Choose Brandfetch API key",
+    options=["Key 1", "Key 2", "Key 3"],
+    index=0
+)
+
+key_map = {
+    "Key 1": st.secrets["BRANDFETCH_API_KEY1"],
+    "Key 2": st.secrets["BRANDFETCH_API_KEY2"],
+    "Key 3": st.secrets["BRANDFETCH_API_KEY3"]
+}
+brand_api_key = key_map[api_choice]
+
 # Upload file
 uploaded_file = st.file_uploader("Upload your Excel file", type=["xlsx"])
 st.caption("Please ensure your Excel file maintains the 'Python Strip Mask' structure to guarantee accurate slide creation.")
@@ -67,6 +81,7 @@ template_file = st.selectbox(
     index=0  # defaults to first
 )
 output_file = st.text_input("Output PPT file name", value="buyers_presentation.pptx")
+
 
 # Step 1 - Layout options
 template_options = {
@@ -98,7 +113,7 @@ if uploaded_file is not None:
             st.success(f"✓ Loaded {len(df)} buyers from uploaded file.")
 
             prs = Presentation(os.path.join(get_base_path(), template_file))
-            run_strips_template(template_number, prs=prs, df=df)
+            run_strips_template(template_number, prs=prs, df=df, brand_api_key=brand_api_key)
             pptx_io = io.BytesIO()
             prs.save(pptx_io)
             pptx_io.seek(0)

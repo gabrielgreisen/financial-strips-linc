@@ -23,7 +23,7 @@ df = df.dropna(subset=['pb_id'])
 
 print(f"✅ Loaded {len(df)} buyers from mask.")
 
-def run_strips_template(template_number: int, prs: Presentation, df: pd.DataFrame):
+def run_strips_template(template_number: int, prs: Presentation, df: pd.DataFrame, brand_api_key):
     """
     Wrapper function to select the template and populate the presentation
     with all slides needed, slicing the DataFrame into chunks automatically.
@@ -65,7 +65,7 @@ def run_strips_template(template_number: int, prs: Presentation, df: pd.DataFram
             start_number = run_count * rows_per_slide + 1
 
             financials_layout_one(
-                prs, layout_index=1, buyers_chunk_df=chunk_df, start_number=start_number
+                prs, layout_index=1, buyers_chunk_df=chunk_df, start_number=start_number, brand_api_key=brand_api_key
             )
         print(f"✅ Finished presentation with {runs_total} slides.")
     if template_number == 2:
@@ -79,7 +79,7 @@ def run_strips_template(template_number: int, prs: Presentation, df: pd.DataFram
             start_number = run_count * rows_per_slide + 1
 
             financials_layout_two(
-                prs, layout_index=1, buyers_chunk_df=chunk_df, start_number=start_number
+                prs, layout_index=1, buyers_chunk_df=chunk_df, start_number=start_number, brand_api_key=brand_api_key
             )
         print(f"✅ Finished presentation with {runs_total} slides.")
     

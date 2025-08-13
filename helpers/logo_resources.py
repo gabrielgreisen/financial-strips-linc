@@ -4,7 +4,7 @@ from path_helpers import get_base_path
 
 BASE_PATH = get_base_path()
 
-def ensure_logo_available(logo_name, domain, logo_base_dir="logos"):
+def ensure_logo_available(logo_name, domain, brand_api_key, logo_base_dir="logos"):
     """
     Checks if the logo PNG exists in the local logos folder.
     If not, attempts to fetch it from Brandfetch using the domain
@@ -33,7 +33,7 @@ def ensure_logo_available(logo_name, domain, logo_base_dir="logos"):
         return logo_file
     else:
         print(f"🔍 Attempting to fetch logo for {domain} to save as {logo_name}")
-        logo_url = get_brandfetch_logo(domain)
+        logo_url = get_brandfetch_logo(domain, BRANDFETCH_API_KEY=brand_api_key)
         if logo_url:
             download_logo_file(logo_url, logo_name, save_dir=logo_dir)
             if os.path.exists(logo_file):
@@ -43,7 +43,7 @@ def ensure_logo_available(logo_name, domain, logo_base_dir="logos"):
         return None
     
 
-def get_logo_file_path_main(row, logo_base_dir="logos"):
+def get_logo_file_path_main(row, brand_api_key, logo_base_dir="logos"):
     """
     Given a DataFrame row with expected columns for logo name and domain,
     returns the full path to the logo file, ensuring it exists (or fetched).
@@ -65,9 +65,9 @@ def get_logo_file_path_main(row, logo_base_dir="logos"):
     logo_name = str(row["logo_file"]) # your 8th column for cleaned logo name
     domain = str(row["website"]) # your 7th column for website domain
 
-    return ensure_logo_available(logo_name, domain, logo_base_dir=logo_base_dir)
+    return ensure_logo_available(logo_name, domain, brand_api_key=brand_api_key, logo_base_dir=logo_base_dir)
 
-def get_logo_file_path(row, logo_name_column, domain_column, logo_base_dir="logos"):
+def get_logo_file_path(row, logo_name_column, domain_column, brand_api_key, logo_base_dir="logos"):
     """
     Given a DataFrame row with expected columns for logo name and domain,
     returns the full path to the logo file, ensuring it exists (or fetched).
@@ -89,10 +89,10 @@ def get_logo_file_path(row, logo_name_column, domain_column, logo_base_dir="logo
     logo_name = str(row[logo_name_column]) 
     domain = str(row[domain_column]) 
 
-    return ensure_logo_available(logo_name, domain, logo_base_dir=logo_base_dir)
+    return ensure_logo_available(logo_name, domain, brand_api_key=brand_api_key, logo_base_dir=logo_base_dir)
 
 
-def get_lincoln_file_path(logo_name, logo_base_dir="linc_logos"):
+def get_lincoln_file_path(logo_name, brand_api_key, logo_base_dir="linc_logos"):
     """
     Given a DataFrame row with expected columns for logo name and domain,
     returns the full path to the logo file, ensuring it exists (or fetched).
@@ -113,4 +113,4 @@ def get_lincoln_file_path(logo_name, logo_base_dir="linc_logos"):
 
     domain = "www.lincolninternational.com" # your 7th column for website domain
 
-    return ensure_logo_available(logo_name, domain, logo_base_dir=logo_base_dir)
+    return ensure_logo_available(logo_name, domain, brand_api_key=brand_api_key, logo_base_dir=logo_base_dir)
