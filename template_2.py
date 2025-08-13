@@ -43,10 +43,10 @@ def financials_layout_two(prs: Presentation, layout_index: int, buyers_chunk_df:
     for i, (_, row) in enumerate(buyers_chunk_df.iterrows()):
         row_idx = i + 1
         # Assumes that columns follow the correct format/order of the columns according to mask; fixed column positions
-        type = str(row.iloc[3])
-        type2 = str(row.iloc[4])
-        country = str(row.iloc[5])
-        br_investment = str(row.iloc[8])
+        type = str(row["primary_type"])
+        type2 = str(row["secondary_type"])
+        country = str(row["country"])
+        br_investment = str(row["brazil_investments"])
         
         def format_number(val):
             try:
@@ -54,8 +54,8 @@ def financials_layout_two(prs: Presentation, layout_index: int, buyers_chunk_df:
             except:
                 return str(val)
 
-        aum_latam = format_number(row.iloc[9])
-        dry_powder_latam = format_number(row.iloc[10])
+        aum_latam = format_number(row["aum_latam"])
+        dry_powder_latam = format_number(row["dry_powder_latam"])
         linc_advised_main = str(row.iloc[11])
 
         investment1desc = str(row.iloc[18])
