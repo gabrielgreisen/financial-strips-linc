@@ -35,7 +35,7 @@ st.caption("Please ensure your Excel file maintains the 'Python Strip Mask' stru
 sheet_name = st.text_input("Sheet name", value="Python Financials Mask")
 template_file = st.selectbox(
     "Select PPT template file",
-    options=["financials_templates.pptx", "template_wide.pptx"],
+    options=["financials_templates.pptx", "financials_templates_wide.pptx"],
     index=0  # defaults to first
 )
 output_file = st.text_input("Output PPT file name", value="buyers_presentation.pptx")
