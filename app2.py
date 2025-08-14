@@ -85,7 +85,7 @@ output_file = st.text_input("Output PPT file name", value="buyers_presentation.p
 
 # Step 1 - Layout options
 template_options = {
-    "Financial Buyer Strips (Dry Powder only)": 1,
+    "Financial Buyer Strips (Dry Powder only)" : 1,
     "Financial Buyer Strips (Dry Powder + AUM)" : 2,
     "Financial Buyer Strips (Dry Powder only) (Português)" : 3,
     "Financial Buyer Strips (Dry Powder + AUM) (Português)" : 4
