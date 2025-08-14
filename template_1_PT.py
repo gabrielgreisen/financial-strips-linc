@@ -27,7 +27,7 @@ def financials_layout_one_PT(prs: Presentation, layout_index: int, buyers_chunk_
     slide_layout = prs.slide_layouts[layout_index]
     slide = prs.slides.add_slide(slide_layout)
 
-    copy_table_from_template_slide(prs, source_slide_idx=1, target_slide=slide)
+    copy_table_from_template_slide(prs, source_slide_idx=3, target_slide=slide)
 
     # Find the table shape on the slide
     table = None
