@@ -38,7 +38,7 @@ check_auth()
 
 # === Header with Lincoln logo
 st.image(os.path.join(get_base_path(), "logos", "lincolninternational.png"), width=200)
-st.markdown("<h2 style='font-family:Arial; color:#003366;'>Buyers Presentation Tool</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-family:Arial; color:#003366;'>Financial Buyers Presentation Tool</h2>", unsafe_allow_html=True)
 
 st.markdown("<hr style='border:1px solid #eee'>", unsafe_allow_html=True)
 
@@ -73,7 +73,7 @@ brand_api_key = key_map[api_choice]
 
 # Upload file
 uploaded_file = st.file_uploader("Upload your Excel file", type=["xlsx"])
-st.caption("Please ensure your Excel file maintains the 'Python Strip Mask' structure to guarantee accurate slide creation.")
+st.caption("Please ensure your Excel file maintains the 'Python Financials Mask' structure to guarantee accurate slide creation.")
 sheet_name = st.text_input("Sheet name", value="Python Financials Mask")
 template_file = st.selectbox(
     "Select PPT template file",
