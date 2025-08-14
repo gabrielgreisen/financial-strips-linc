@@ -86,9 +86,9 @@ output_file = st.text_input("Output PPT file name", value="buyers_presentation.p
 # Step 1 - Layout options
 template_options = {
     "Financial Buyer Strips (Dry Powder only)": 1,
-    "Strips with key Financials (Dry Powder + AUM)" : 2,
-    "Classic Buyer Strips (Português)" : 3,
-    "Strips with key Financials (Português)" : 4
+    "Financial Buyer Strips (Dry Powder + AUM)" : 2,
+    "Financial Buyer Strips (Dry Powder only) (Português)" : 3,
+    "Financial Buyer Strips (Dry Powder + AUM) (Português)" : 4
 }
 selected_template = st.selectbox("Choose Layout Style", list(template_options.keys()))
 template_number = template_options[selected_template]
