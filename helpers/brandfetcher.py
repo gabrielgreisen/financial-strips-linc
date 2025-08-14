@@ -3,9 +3,9 @@ import requests
 import pandas as pd
 from helpers.request_helpers import clean_domain, shorten_name
 
-#BRANDFETCH_API_KEY = "KGTJrCtYxuDa0XfuQF4m1RNHkaC0D+x2tW9KLbsiVp4="
 
-def get_brandfetch_logo(domain, BRANDFETCH_API_KEY = "KGTJrCtYxuDa0XfuQF4m1RNHkaC0D+x2tW9KLbsiVp4="):
+
+def get_brandfetch_logo(domain, BRANDFETCH_API_KEY):
     
     """
     Queries the Brandfetch API for a given domain and returns 
