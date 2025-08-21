@@ -9,21 +9,14 @@ from path_helpers import get_base_path
 
 BASE_PATH = get_base_path()
 
-df = pd.read_excel(
-    os.path.join(BASE_PATH, "database_strips_v15stale.xlsx"),
-    sheet_name="Python Financials Mask",
-    header=1,  # because the headers for the table are on row 2
-    usecols="B:AK"  # adjust based on column range of the table/info
-)
 
 prs = Presentation(os.path.join(BASE_PATH, "financials_templates.pptx"))
 
 for i, layout in enumerate(prs.slide_layouts):
     print(f"Layout {i}: {layout.name}")
 
-df = df.dropna(subset=['pb_id'])
 
-print(f"✅ Loaded {len(df)} buyers from mask.")
+
 
 def run_strips_template(template_number: int, prs: Presentation, df: pd.DataFrame, brand_api_key):
     """
